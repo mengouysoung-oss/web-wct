@@ -11,11 +11,28 @@ function Swatch({ product, className = "" }) {
   return (
     <div
       className={`relative flex items-end justify-start overflow-hidden ${className}`}
-      style={{ background: SWATCHES[product.swatch] }}
+      style={{ background: "#E4E0D5" }}
     >
+      {product.image ? (
+        <img
+          src={product.image}
+          alt={product.name}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <div
+          className="absolute inset-0"
+          style={{ background: SWATCHES[product.swatch] }}
+        />
+      )}
+
       <span
-        className="text-[11px] tracking-widest uppercase p-3"
-        style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, sans-serif" }}
+        className="relative z-10 text-[11px] tracking-widest uppercase p-3"
+        style={{
+          color: "rgba(255,255,255,0.75)",
+          fontFamily: "Inter, sans-serif",
+          textShadow: "0 1px 4px rgba(0,0,0,0.4)",
+        }}
       >
         {product.category}
       </span>
